@@ -14,4 +14,6 @@
 ActiveSupport::Inflector.inflections(:en) do |inflect|
 	inflect.irregular 'categoria', 'categorias'
 	inflect.irregular 'sub_categoria', 'sub_categorias'
+	inflect.irregular 'avaliacao', 'avaliacoes'
+	inflect.irregular 'item', 'itens'
 end

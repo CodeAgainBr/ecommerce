@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :itens
+  resources :pedidos
+  resources :avaliacoes
   resources :produtos
   resources :sub_categorias
   resources :categorias

@@ -10,35 +10,61 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181106195121) do
+ActiveRecord::Schema.define(version: 20181106203610) do
 
-  create_table "categoria", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "nome"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table "avaliacoes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "titulo"
+    t.text     "descricao",  limit: 65535
+    t.integer  "nota",                     default: 0
+    t.integer  "user_id"
+    t.integer  "produto_id"
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+    t.index ["produto_id"], name: "index_avaliacoes_on_produto_id", using: :btree
+    t.index ["user_id"], name: "index_avaliacoes_on_user_id", using: :btree
   end
 
   create_table "categorias", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "nome"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["nome"], name: "index_categorias_on_nome", unique: true, using: :btree
+  end
+
+  create_table "itens", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "quantidade", default: "0"
+    t.integer  "produto_id"
+    t.integer  "pedido_id"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.index ["pedido_id"], name: "index_itens_on_pedido_id", using: :btree
+    t.index ["produto_id"], name: "index_itens_on_produto_id", using: :btree
+  end
+
+  create_table "pedidos", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "titulo"
+    t.string   "status",     default: "Aguardando pagamento"
+    t.integer  "user_id"
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
+    t.index ["user_id"], name: "index_pedidos_on_user_id", using: :btree
   end
 
   create_table "produtos", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "nome"
-    t.integer  "sub_categoria_id"
     t.string   "marca"
     t.string   "cor"
-    t.float    "preco",            limit: 24
-    t.integer  "garantia"
-    t.float    "peso",             limit: 24
+    t.float    "preco",            limit: 24,    default: 0.0
+    t.integer  "garantia",                       default: 0
+    t.float    "peso",             limit: 24,    default: 0.0
     t.datetime "validade"
     t.string   "modelo"
     t.text     "descricao",        limit: 65535
-    t.integer  "quantidade"
-    t.integer  "vendas"
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+    t.integer  "quantidade",                     default: 0
+    t.integer  "vendas",                         default: 0
+    t.integer  "sub_categoria_id"
+    t.datetime "created_at",                                   null: false
+    t.datetime "updated_at",                                   null: false
     t.index ["sub_categoria_id"], name: "index_produtos_on_sub_categoria_id", using: :btree
   end
 
@@ -75,6 +101,11 @@ ActiveRecord::Schema.define(version: 20181106195121) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "avaliacoes", "produtos"
+  add_foreign_key "avaliacoes", "users"
+  add_foreign_key "itens", "pedidos"
+  add_foreign_key "itens", "produtos"
+  add_foreign_key "pedidos", "users"
   add_foreign_key "produtos", "sub_categorias"
   add_foreign_key "sub_categorias", "categorias"
 end

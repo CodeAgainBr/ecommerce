@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Titulo:</strong>
+  <%= @avaliacao.titulo %>
+</p>
+
+<p>
+  <strong>Descricao:</strong>
+  <%= @avaliacao.descricao %>
+</p>
+
+<p>
+  <strong>Nota:</strong>
+  <%= @avaliacao.nota %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @avaliacao.user %>
+</p>
+
+<p>
+  <strong>Produto:</strong>
+  <%= @avaliacao.produto %>
+</p>
+
+<%= link_to 'Edit', edit_avaliacao_path(@avaliacao) %> |
+<%= link_to 'Back', avaliacoes_path %>
