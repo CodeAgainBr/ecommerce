@@ -1,1 +1,51 @@
+@import "sidebar";
 @import "bootstrap";
+@import "font_awesome5";
+@import "toastr";
+
+* {
+	text-decoration: none !important;
+}
+
+body {
+	min-height: 100vh;
+}
+
+.card.card-produto {
+	margin-left: 3%;
+	border: 0;
+
+	.card-body {
+		padding: 0.5rem 0.5rem 0 0.5rem;
+
+		.nome {
+		  line-height: 1;
+			margin-bottom: 0.2rem;
+		}
+
+		.preco {
+			margin-bottom: 0.2rem;
+		}
+	}
+}
+
+.theme-dark {
+	background-color: #dddddd;
+}
+
+i {
+	height: 20px;
+	width: 20px;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.card-head .img {
+	height: 180px;
+	width: 100%;
+	border: 5px solid black;
+}
+
+.pointer {
+	cursor: pointer;
+}

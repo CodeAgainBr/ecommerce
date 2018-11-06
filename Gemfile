@@ -46,6 +46,12 @@ gem 'jquery_mask_rails', '~> 0.1.0'
 gem 'rails_admin', '~> 1.3'
 gem "rails_admin_import", "~> 2.1"
 
+# Font Awesome 5
+gem 'font_awesome5_rails'
+
+# Toastr for alerts
+gem 'toastr-rails'
+
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'web-console', '>= 3.3.0'
