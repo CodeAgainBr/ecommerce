@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nome: MyString
+  sub_categoria: one
+  marca: MyString
+  cor: MyString
+  preco: 1.5
+  garantia: 1
+  peso: 1.5
+  validade: 2018-11-06 17:51:22
+  modelo: MyString
+  descricao: MyText
+  quantidade: 1
+  vendas: 1
+
+two:
+  nome: MyString
+  sub_categoria: two
+  marca: MyString
+  cor: MyString
+  preco: 1.5
+  garantia: 1
+  peso: 1.5
+  validade: 2018-11-06 17:51:22
+  modelo: MyString
+  descricao: MyText
+  quantidade: 1
+  vendas: 1
