@@ -1,29 +1,37 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Titulo:</strong>
-  <%= @avaliacao.titulo %>
-</p>
+<section>
+  <div class="card bg-white text-danger mt-3 mb-3 px-5 pt-3 pb-1 shadow">
+    <div class="card-head">
+      <div class="card-title">
+        <%= @avaliacao.titulo %>
+      </div>
+    </div>
 
-<p>
-  <strong>Descricao:</strong>
-  <%= @avaliacao.descricao %>
-</p>
+    <div class="card-body">
+      <p>
+        <strong>Descricao:</strong>
+        <%= @avaliacao.descricao %>
+      </p>
 
-<p>
-  <strong>Nota:</strong>
-  <%= @avaliacao.nota %>
-</p>
+      <p>
+        <strong>Nota:</strong>
+        <%= @avaliacao.nota %>
+      </p>
 
-<p>
-  <strong>User:</strong>
-  <%= @avaliacao.user %>
-</p>
+      <p>
+        <strong>User:</strong>
+        <%= @avaliacao.user %>
+      </p>
 
-<p>
-  <strong>Produto:</strong>
-  <%= @avaliacao.produto %>
-</p>
-
-<%= link_to 'Edit', edit_avaliacao_path(@avaliacao) %> |
-<%= link_to 'Back', avaliacoes_path %>
+      <p>
+        <strong>Produto:</strong>
+        <%= @avaliacao.produto %>
+      </p>
+    </div>
+    
+    <div class="card-footer">
+      <%= link_to 'Back', avaliacoes_path %>
+    </div>
+  </div>
+</section>

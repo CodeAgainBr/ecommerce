@@ -1,6 +1,17 @@
-<h1>Editing Avaliacao</h1>
+<section>
+	<div class="card bg-white text-danger mt-3 mb-3 px-5 pt-3 pb-1 shadow">
+	  <div class="card-head">
+	    <div class="card-title">
+	    	<h1>Editing Avaliacao</h1>
+	    </div>
+	  </div>
 
-<%= render 'form', avaliacao: @avaliacao %>
-
-<%= link_to 'Show', @avaliacao %> |
-<%= link_to 'Back', avaliacoes_path %>
+	  <div class="card-body">
+			<%= render 'form', avaliacao: @avaliacao %>
+	  </div>
+	  
+		<div class="card-footer">
+			<%= link_to 'Back', avaliacoes_path %>
+		</div>
+	</div>
+</section>

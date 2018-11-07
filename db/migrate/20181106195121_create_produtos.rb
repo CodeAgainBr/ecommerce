@@ -12,6 +12,7 @@ class CreateProdutos < ActiveRecord::Migration[5.0]
       t.text :descricao
       t.integer :quantidade,    default: 0
       t.integer :vendas,        default: 0
+      t.string :imagem
       t.belongs_to :sub_categoria, foreign_key: true
 
       t.timestamps

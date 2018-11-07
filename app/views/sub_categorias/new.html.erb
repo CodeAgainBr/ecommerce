@@ -1,5 +1,17 @@
-<h1>New Sub Categoria</h1>
+<section>
+  <div class="card bg-white text-danger mt-3 mb-3 px-5 pt-3 pb-1 shadow">
+    <div class="card-head">
+      <div class="card-title">
+				<h1>New Sub Categoria</h1>
+      </div>
+    </div>
 
-<%= render 'form', sub_categoria: @sub_categoria %>
-
-<%= link_to 'Back', sub_categorias_path %>
+    <div class="card-body">
+			<%= render 'form', sub_categoria: @sub_categoria %>
+    </div>
+    
+    <div class="card-footer">
+			<%= link_to 'Back', sub_categorias_path %>
+    </div>
+  </div>
+</section>

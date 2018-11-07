@@ -1,5 +1,6 @@
 class AvaliacoesController < ApplicationController
   before_action :set_avaliacao, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /avaliacoes
   # GET /avaliacoes.json
@@ -15,6 +16,8 @@ class AvaliacoesController < ApplicationController
   # GET /avaliacoes/new
   def new
     @avaliacao = Avaliacao.new
+    @avaliacoes.user = current_user
+    @avaliacoes.produto = params[:produto]
   end
 
   # GET /avaliacoes/1/edit

@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(version: 20181106203610) do
     t.text     "descricao",        limit: 65535
     t.integer  "quantidade",                     default: 0
     t.integer  "vendas",                         default: 0
+    t.string   "imagem"
     t.integer  "sub_categoria_id"
     t.datetime "created_at",                                   null: false
     t.datetime "updated_at",                                   null: false

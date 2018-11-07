@@ -1,64 +1,71 @@
 <p id="notice"><%= notice %></p>
+<section>
+  <div class="card bg-white text-danger mt-3 mb-3 px-5 pt-3 pb-1 shadow">
+    <div class="card-head">
+      <div class="card-title">
+        <%= @produto.nome %>
+      </div>
+    </div>
 
-<p>
-  <strong>Nome:</strong>
-  <%= @produto.nome %>
-</p>
+    <div class="card-body">
+      <p>
+        <strong>Sub categoria:</strong>
+        <%= @produto.sub_categoria %>
+      </p>
 
-<p>
-  <strong>Sub categoria:</strong>
-  <%= @produto.sub_categoria %>
-</p>
+      <p>
+        <strong>Marca:</strong>
+        <%= @produto.marca %>
+      </p>
 
-<p>
-  <strong>Marca:</strong>
-  <%= @produto.marca %>
-</p>
+      <p>
+        <strong>Cor:</strong>
+        <%= @produto.cor %>
+      </p>
 
-<p>
-  <strong>Cor:</strong>
-  <%= @produto.cor %>
-</p>
+      <p>
+        <strong>Preco:</strong>
+        <%= @produto.preco %>
+      </p>
 
-<p>
-  <strong>Preco:</strong>
-  <%= @produto.preco %>
-</p>
+      <p>
+        <strong>Garantia:</strong>
+        <%= @produto.garantia %>
+      </p>
 
-<p>
-  <strong>Garantia:</strong>
-  <%= @produto.garantia %>
-</p>
+      <p>
+        <strong>Peso:</strong>
+        <%= @produto.peso %>
+      </p>
 
-<p>
-  <strong>Peso:</strong>
-  <%= @produto.peso %>
-</p>
+      <p>
+        <strong>Validade:</strong>
+        <%= @produto.validade %>
+      </p>
 
-<p>
-  <strong>Validade:</strong>
-  <%= @produto.validade %>
-</p>
+      <p>
+        <strong>Modelo:</strong>
+        <%= @produto.modelo %>
+      </p>
 
-<p>
-  <strong>Modelo:</strong>
-  <%= @produto.modelo %>
-</p>
+      <p>
+        <strong>Descricao:</strong>
+        <%= @produto.descricao %>
+      </p>
 
-<p>
-  <strong>Descricao:</strong>
-  <%= @produto.descricao %>
-</p>
+      <p>
+        <strong>Quantidade:</strong>
+        <%= @produto.quantidade %>
+      </p>
 
-<p>
-  <strong>Quantidade:</strong>
-  <%= @produto.quantidade %>
-</p>
-
-<p>
-  <strong>Vendas:</strong>
-  <%= @produto.vendas %>
-</p>
-
-<%= link_to 'Edit', edit_produto_path(@produto) %> |
-<%= link_to 'Back', produtos_path %>
+      <p>
+        <strong>Vendas:</strong>
+        <%= @produto.vendas %>
+      </p>
+    </div>
+    
+    <div class="card-footer">
+      <%= link_to 'Back', produtos_path %>
+    </div>
+  </div>
+</section>

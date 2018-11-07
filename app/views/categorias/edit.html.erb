@@ -1,6 +1,17 @@
-<h1>Editing Categoria</h1>
+<section>
+	<div class="card bg-white text-danger mt-3 mb-3 px-5 pt-3 pb-1 shadow">
+	  <div class="card-head">
+	    <div class="card-title">
+				<h1>Editing Categoria</h1>
+	    </div>
+	  </div>
 
-<%= render 'form', categoria: @categoria %>
-
-<%= link_to 'Show', @categoria %> |
-<%= link_to 'Back', categorias_path %>
+	  <div class="card-body">
+			<%= render 'form', categoria: @categoria %>
+	  </div>
+	  
+		<div class="card-footer">
+			<%= link_to 'Back', categorias_path %>
+		</div>
+	</div>
+</section>

@@ -1,49 +1,58 @@
 <p id="notice"><%= notice %></p>
+<section>
+  <div class="card bg-white text-danger mt-3 mb-3 px-5 pt-3 pb-1 shadow">
+    <div class="card-head">
+      <div class="card-title">
+        <h1>Produtos</h1>
+      </div>
+    </div>
 
-<h1>Produtos</h1>
+    <div class="card-body">
+      <table>
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Sub categoria</th>
+            <th>Marca</th>
+            <th>Cor</th>
+            <th>Preco</th>
+            <th>Garantia</th>
+            <th>Peso</th>
+            <th>Validade</th>
+            <th>Modelo</th>
+            <th>Descricao</th>
+            <th>Quantidade</th>
+            <th>Vendas</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
 
-<table>
-  <thead>
-    <tr>
-      <th>Nome</th>
-      <th>Sub categoria</th>
-      <th>Marca</th>
-      <th>Cor</th>
-      <th>Preco</th>
-      <th>Garantia</th>
-      <th>Peso</th>
-      <th>Validade</th>
-      <th>Modelo</th>
-      <th>Descricao</th>
-      <th>Quantidade</th>
-      <th>Vendas</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @produtos.each do |produto| %>
-      <tr>
-        <td><%= produto.nome %></td>
-        <td><%= produto.sub_categoria %></td>
-        <td><%= produto.marca %></td>
-        <td><%= produto.cor %></td>
-        <td><%= produto.preco %></td>
-        <td><%= produto.garantia %></td>
-        <td><%= produto.peso %></td>
-        <td><%= produto.validade %></td>
-        <td><%= produto.modelo %></td>
-        <td><%= produto.descricao %></td>
-        <td><%= produto.quantidade %></td>
-        <td><%= produto.vendas %></td>
-        <td><%= link_to 'Show', produto %></td>
-        <td><%= link_to 'Edit', edit_produto_path(produto) %></td>
-        <td><%= link_to 'Destroy', produto, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Produto', new_produto_path %>
+        <tbody>
+          <% @produtos.each do |produto| %>
+            <tr>
+              <td><%= produto.nome %></td>
+              <td><%= produto.sub_categoria %></td>
+              <td><%= produto.marca %></td>
+              <td><%= produto.cor %></td>
+              <td><%= produto.preco %></td>
+              <td><%= produto.garantia %></td>
+              <td><%= produto.peso %></td>
+              <td><%= produto.validade %></td>
+              <td><%= produto.modelo %></td>
+              <td><%= produto.descricao %></td>
+              <td><%= produto.quantidade %></td>
+              <td><%= produto.vendas %></td>
+              <td><%= link_to 'Show', produto %></td>
+              <td><%= link_to 'Edit', edit_produto_path(produto) %></td>
+              <td><%= link_to 'Destroy', produto, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    
+    <div class="card-footer">
+      <%= link_to 'New Produto', new_produto_path %>
+    </div>
+  </div>
+</section>

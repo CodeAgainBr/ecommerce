@@ -1,35 +1,45 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Avaliacoes</h1>
+<section>
+  <div class="card bg-white text-danger mt-3 mb-3 px-5 pt-3 pb-1 shadow">
+    <div class="card-head">
+      <div class="card-title">
+        <h1>Avaliacoes</h1>
+      </div>
+    </div>
+    
+    <div class="card-body">
+      <table class="table table-striped table-bordered" style="width:100%">
+        <thead>
+          <tr>
+            <th>Titulo</th>
+            <th>Descricao</th>
+            <th>Nota</th>
+            <th>User</th>
+            <th>Produto</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
 
-<table>
-  <thead>
-    <tr>
-      <th>Titulo</th>
-      <th>Descricao</th>
-      <th>Nota</th>
-      <th>User</th>
-      <th>Produto</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+        <tbody>
+          <% @avaliacoes.each do |avaliacao| %>
+            <tr>
+              <td><%= avaliacao.titulo %></td>
+              <td><%= avaliacao.descricao %></td>
+              <td><%= avaliacao.nota %></td>
+              <td><%= avaliacao.user %></td>
+              <td><%= avaliacao.produto %></td>
+              <td><%= link_to 'Show', avaliacao %></td>
+              <td><%= link_to 'Edit', edit_avaliacao_path(avaliacao) %></td>
+              <td><%= link_to 'Destroy', avaliacao, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
 
-  <tbody>
-    <% @avaliacoes.each do |avaliacao| %>
-      <tr>
-        <td><%= avaliacao.titulo %></td>
-        <td><%= avaliacao.descricao %></td>
-        <td><%= avaliacao.nota %></td>
-        <td><%= avaliacao.user %></td>
-        <td><%= avaliacao.produto %></td>
-        <td><%= link_to 'Show', avaliacao %></td>
-        <td><%= link_to 'Edit', edit_avaliacao_path(avaliacao) %></td>
-        <td><%= link_to 'Destroy', avaliacao, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Avaliacao', new_avaliacao_path %>
+    <div class="card-footer">
+      <%= link_to 'New Avaliacao', new_avaliacao_path %>
+    </div>
+  </div>
+</section>
