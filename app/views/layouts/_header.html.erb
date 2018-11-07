@@ -1,0 +1,63 @@
+<nav id="sidebar">
+  <div class="sidebar-header text-center">
+    <button id="sidebar" class="btn btn-block text-white">
+      <%= link_to root_path, class: "h5 text-white d-inline" do %>
+        <span>Ecommerce</span>
+      <% end %>
+    </button>
+  </div>
+
+  <ul class="list-unstyled components">
+    <li>
+      <a href="#">
+        <h4 class="mb-0">Periféricos</h4>
+      </a>
+    </li>
+
+    <li>
+      <a href="#" class="pl-4">Teclado</a>
+    </li>
+
+    <li>
+      <a href="#" class="pl-4">Mouse</a>
+    </li>
+
+    <li>
+      <a href="#" class="pl-4">Headset</a>
+    </li>
+
+    <li>
+      <a href="#" class="pl-4">Monitor</a>
+    </li>
+  </ul>
+</nav>
+
+<div id="content">
+  <nav class="navbar navbar-expand-lg sticky-top px-0 py-0">
+    <ul class="navbar-nav ml-auto list-unstyled components">
+      <li class="nav-item">
+        <%= link_to rails_admin_path, class: "nav-link" do %>
+          <i class="fas fa-key"></i>
+        <% end %>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <%= link_to console_path, class: "nav-link" do %>
+          <i class="fas fa-terminal"></i>
+        <% end %>
+      </li>
+
+      <li class="nav-item">
+        <%= link_to edit_user_registration_path, class: "nav-link" do %>
+          <i class="fas fa-cog"></i>
+        <% end %>
+      </li>
+      
+      <li class="nav-item">
+        <%= link_to destroy_user_session_path, class: "nav-link", method: :delete do %>
+          <i class="fas fa-sign-out-alt"></i>
+        <% end %>
+      </li>
+    </ul>
+  </nav>

@@ -4,17 +4,41 @@
     <title>Ecommerce</title>
     <%= csrf_meta_tags %>
 
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
   </head>
 
-  <body>
-    <div class="container-fluid">
-    	<p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
-      <%= yield %>
+  <body class="theme-dark">
+    <div class="wrapper">
+      <% if current_user %>
+        <%= render "layouts/header" %>
+      <% else %>
+        <div class="container">
+      <% end %>
+
+        <% if notice %>
+          <script>
+            toastr["success"]("<%= notice %>");
+          </script>
+        <% end %>
+
+        <% if alert %>
+          <script>
+            toastr["warning"]("<%= alert %>");
+          </script>
+        <% end %>
+
+        <%= yield %>
+      </div>
     </div>
+    <!-- <footer class="page-footer font-small bg-dark text-white mt-4">
+      <div class="footer-copyright text-center py-3">© 2018 Copyright:
+        <a href="#"> Code Again</a>
+      </div>
+    </footer> -->
   </body>
 </html>
