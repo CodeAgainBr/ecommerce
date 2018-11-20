@@ -1,5 +1,6 @@
 class ItensController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /itens
   # GET /itens.json

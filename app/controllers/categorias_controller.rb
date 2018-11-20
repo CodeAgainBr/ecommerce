@@ -1,5 +1,6 @@
 class CategoriasController < ApplicationController
   before_action :set_categoria, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /categorias
   # GET /categorias.json
@@ -28,7 +29,7 @@ class CategoriasController < ApplicationController
 
     respond_to do |format|
       if @categoria.save
-        format.html { redirect_to @categoria, notice: 'Categoria was successfully created.' }
+        format.html { redirect_to categorias_url, notice: 'Categoria was successfully created.' }
         format.json { render :show, status: :created, location: @categoria }
       else
         format.html { render :new }
@@ -42,7 +43,7 @@ class CategoriasController < ApplicationController
   def update
     respond_to do |format|
       if @categoria.update(categoria_params)
-        format.html { redirect_to @categoria, notice: 'Categoria was successfully updated.' }
+        format.html { redirect_to categorias_url, notice: 'Categoria was successfully updated.' }
         format.json { render :show, status: :ok, location: @categoria }
       else
         format.html { render :edit }

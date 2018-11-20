@@ -7,7 +7,7 @@
 
     <%= f.input :nome %>
 
-    <%= f.association :sub_categoria %>
+    <%= f.association :sub_categoria, label_method: :nome, prompt: "Selecione o produto" %>
 
     <%= f.input :marca %>
 
@@ -22,6 +22,8 @@
     <%= f.input :validade %>
 
     <%= f.input :modelo %>
+
+    <%= f.input :imagem %>
 
     <%= f.input :descricao %>
 

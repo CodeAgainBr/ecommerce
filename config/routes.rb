@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   devise_for :users
 
   get "/console", to: "pages#console", as: "console"
+  get "/categoria/:categoria", to: "pages#categoria", as: "categoria"
+  get "/sub_categoria/:sub_categoria", to: "pages#sub_categoria", as: "sub_categoria"
 
   root to: "pages#home"
 end

@@ -13,5 +13,8 @@
 !/log/.keep
 !/tmp/.keep
 
+# Ignore Gemfile.lock
+Gemfile.lock
+
 # Ignore Byebug command history file.
 .byebug_history

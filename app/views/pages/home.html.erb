@@ -5,113 +5,28 @@
 	</div>
 </section>	
 
-<div class="container">
+<div class="container px-0">
 	<div class="row">
-		<div class="col">
-			<div class="row">
-				<div class="col-12 col-md-6 col-lg-4">
-					<div class="card">
-						<img class="card-img-top" src="https://dummyimage.com/600x400/55595c/fff" alt="Card image cap">
-						<div class="card-body">
-							<h5 class="card-title mt-1"><a href="#">Mouse Gamer</a></h5>
-							<p class="card-text">Mouse extramemente veloz feito para você aproveitar seus games ao máximo!</p>
-							<div class="row">
-								<div class="col">
-									<p class="btn btn-danger btn-block">99.00 $</p>
-								</div>
-								<div class="col">
-									<a href="#" class="btn btn-success btn-block">Adicionar ao carrinho</a>
-								</div>
+		<% @produtos.each do |produto| %>
+			<div class="col-12 col-md-6 col-lg-4">
+				<div class="card">
+					<img class="card-img-top" src="<%= produto.imagem %>" alt="Card image cap">
+					<div class="card-body">
+						<h5 class="card-title mt-1"><a href="#"><%= produto.nome %></a></h5>
+						<p class="card-text"><%= produto.descricao %></p>
+						<div class="row">
+							<div class="col-12">
+								<h2>
+									<span class="badge badge-danger btn-block"><%= produto.preco %> R$</span>
+								</h2>
 							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-12 col-md-6 col-lg-4">
-					<div class="card">
-						<img class="card-img-top" src="https://dummyimage.com/600x400/55595c/fff" alt="Card image cap">
-						<div class="card-body">
-							<h5 class="card-title mt-1"><a href="#">Mouse Gamer</a></h5>
-							<p class="card-text">Mouse extramemente veloz feito para você aproveitar seus games ao máximo!</p>
-							<div class="row">
-								<div class="col">
-									<p class="btn btn-danger btn-block">99.00 $</p>
-								</div>
-								<div class="col">
-									<a href="#" class="btn btn-success btn-block">Adicionar ao carrinho</a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-12 col-md-6 col-lg-4">
-					<div class="card">
-						<img class="card-img-top" src="https://dummyimage.com/600x400/55595c/fff" alt="Card image cap">
-						<div class="card-body">
-							<h5 class="card-title mt-1"><a href="#">Mouse Gamer</a></h5>
-							<p class="card-text">Mouse extramemente veloz feito para você aproveitar seus games ao máximo!</p>
-							<div class="row">
-								<div class="col">
-									<p class="btn btn-danger btn-block">99.00 $</p>
-								</div>
-								<div class="col">
-									<a href="#" class="btn btn-success btn-block">Adicionar ao carrinho</a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-12 col-md-6 col-lg-4 mt-3">
-					<div class="card">
-						<img class="card-img-top" src="https://dummyimage.com/600x400/55595c/fff" alt="Card image cap">
-						<div class="card-body">
-							<h5 class="card-title mt-1"><a href="#">Mouse Gamer</a></h5>
-							<p class="card-text">Mouse extramemente veloz feito para você aproveitar seus games ao máximo!</p>
-							<div class="row">
-								<div class="col">
-									<p class="btn btn-danger btn-block">99.00 $</p>
-								</div>
-								<div class="col">
-									<a href="#" class="btn btn-success btn-block">Adicionar ao carrinho</a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-12 col-md-6 col-lg-4 mt-3">
-					<div class="card">
-						<img class="card-img-top" src="https://dummyimage.com/600x400/55595c/fff" alt="Card image cap">
-						<div class="card-body">
-							<h5 class="card-title mt-1"><a href="#">Mouse Gamer</a></h5>
-							<p class="card-text">Mouse extramemente veloz feito para você aproveitar seus games ao máximo!</p>
-							<div class="row">
-								<div class="col">
-									<p class="btn btn-danger btn-block">99.00 $</p>
-								</div>
-								<div class="col">
-									<a href="#" class="btn btn-success btn-block">Adicionar ao carrinho</a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-12 col-md-6 col-lg-4 mt-3">
-					<div class="card">
-						<img class="card-img-top" src="https://dummyimage.com/600x400/55595c/fff" alt="Card image cap">
-						<div class="card-body">
-							<h5 class="card-title mt-1"><a href="#">Mouse Gamer</a></h5>
-							<p class="card-text">Mouse extramemente veloz feito para você aproveitar seus games ao máximo!</p>
-							<div class="row">
-								<div class="col">
-									<p class="btn btn-danger btn-block">99.00 $</p>
-								</div>
-								<div class="col">
-									<a href="#" class="btn btn-success btn-block">Adicionar ao carrinho</a>
-								</div>
+							<div class="col-12">
+								<a href="#" class="btn btn-success btn-block">Adicionar ao carrinho</a>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
+		<% end %>
 	</div>
 </div>

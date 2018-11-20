@@ -7,7 +7,7 @@ class CreateProdutos < ActiveRecord::Migration[5.0]
       t.float :preco,           default: 0.0
       t.integer :garantia,      default: 0
       t.float :peso,            default: 0.0
-      t.datetime :validade
+      t.date :validade
       t.string :modelo
       t.text :descricao
       t.integer :quantidade,    default: 0

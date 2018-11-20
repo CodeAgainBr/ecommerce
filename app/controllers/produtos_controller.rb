@@ -1,5 +1,6 @@
 class ProdutosController < ApplicationController
   before_action :set_produto, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /produtos
   # GET /produtos.json
@@ -69,6 +70,6 @@ class ProdutosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def produto_params
-      params.require(:produto).permit(:nome, :sub_categoria_id, :marca, :cor, :preco, :garantia, :peso, :validade, :modelo, :descricao, :quantidade, :vendas)
+      params.require(:produto).permit(:nome, :sub_categoria_id, :marca, :cor, :preco, :garantia, :peso, :validade, :modelo, :descricao, :quantidade, :vendas, :imagem)
     end
 end

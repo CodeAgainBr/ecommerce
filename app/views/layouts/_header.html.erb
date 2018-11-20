@@ -8,56 +8,56 @@
   </div>
 
   <ul class="list-unstyled components">
-    <li>
-      <a href="#">
-        <h4 class="mb-0">Periféricos</h4>
-      </a>
-    </li>
+    <% @categorias = Categoria.all %>
+    <% @categorias.each do |categoria| %>
+      <li>
+        <a href="#">
+          <h4 class="mb-0"><%= categoria.nome %></h4>
+        </a>
+      </li>
 
-    <li>
-      <a href="#" class="pl-4">Teclado</a>
-    </li>
-
-    <li>
-      <a href="#" class="pl-4">Mouse</a>
-    </li>
-
-    <li>
-      <a href="#" class="pl-4">Headset</a>
-    </li>
-
-    <li>
-      <a href="#" class="pl-4">Monitor</a>
-    </li>
+      <% @sub_categorias = SubCategoria.where(categoria_id: categoria) %>
+      <% @sub_categorias.each do |sub_categoria| %>
+        <li>
+          <a href="#" class="pl-4"><%= sub_categoria.nome %></a>
+        </li>
+      <% end %>
+    <% end %>
   </ul>
 </nav>
 
 <div id="content">
   <nav class="navbar navbar-expand-lg sticky-top px-0 py-0">
-    <ul class="navbar-nav ml-auto list-unstyled components">
-      <li class="nav-item">
-        <%= link_to rails_admin_path, class: "nav-link" do %>
-          <i class="fas fa-key"></i>
+    <% if current_user %>
+      <ul class="navbar-nav ml-auto list-unstyled components">
+        <% if current_user.admin %>
+          <li class="nav-item">
+            <%= link_to rails_admin_path, class: "nav-link" do %>
+              <i class="fas fa-key"></i>
+            <% end %>
+            </a>
+          </li>
         <% end %>
-        </a>
-      </li>
 
-      <li class="nav-item">
-        <%= link_to console_path, class: "nav-link" do %>
-          <i class="fas fa-terminal"></i>
+        <% if current_user.admin %>
+          <li class="nav-item">
+            <%= link_to console_path, class: "nav-link" do %>
+              <i class="fas fa-terminal"></i>
+            <% end %>
+          </li>
         <% end %>
-      </li>
 
-      <li class="nav-item">
-        <%= link_to edit_user_registration_path, class: "nav-link" do %>
-          <i class="fas fa-cog"></i>
-        <% end %>
-      </li>
-      
-      <li class="nav-item">
-        <%= link_to destroy_user_session_path, class: "nav-link", method: :delete do %>
-          <i class="fas fa-sign-out-alt"></i>
-        <% end %>
-      </li>
-    </ul>
+        <li class="nav-item">
+          <%= link_to edit_user_registration_path, class: "nav-link" do %>
+            <i class="fas fa-cog"></i>
+          <% end %>
+        </li>
+        
+        <li class="nav-item">
+          <%= link_to destroy_user_session_path, class: "nav-link", method: :delete do %>
+            <i class="fas fa-sign-out-alt"></i>
+          <% end %>
+        </li>
+      </ul>
+    <% end %>
   </nav>

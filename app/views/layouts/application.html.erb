@@ -14,11 +14,8 @@
 
   <body class="theme-dark">
     <div class="wrapper">
-      <% if current_user %>
-        <%= render "layouts/header" %>
-      <% else %>
-        <div class="container">
-      <% end %>
+      <%= render "layouts/header" %>
+      <div class="container">
 
         <% if notice %>
           <script>
@@ -34,8 +31,9 @@
 
         <%= yield %>
       </div>
+      
     </div>
-    <!-- <footer class="page-footer font-small bg-dark text-white mt-4">
+    <!-- <footer class="page-footer font-small bg-dark text-white">
       <div class="footer-copyright text-center py-3">© 2018 Copyright:
         <a href="#"> Code Again</a>
       </div>
