@@ -45,3 +45,13 @@ i {
 	width: 100%;
 	border: 5px solid black;
 }
+
+
+.card.card-anuncio{
+	.card-body{
+		.card-text.produto-descricao{
+			overflow: hidden !important;
+			max-height: 8ch !important;
+		}
+	}
+}

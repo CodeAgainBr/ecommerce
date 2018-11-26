@@ -7,7 +7,7 @@
 
     <%= f.input :nome %>
 
-    <%= f.association :categoria %>
+    <%= f.association :categoria, label_method: :nome, prompt: "Selecione uma categoria" %>
 
   </div>
 

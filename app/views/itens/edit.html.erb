@@ -3,4 +3,4 @@
 <%= render 'form', item: @item %>
 
 <%= link_to 'Show', @item %> |
-<%= link_to 'Back', itens_path %>
+<%= link_to 'Back', itens_path(pedido: params[:pedido]) %>

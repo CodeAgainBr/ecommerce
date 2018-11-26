@@ -7,7 +7,7 @@
     <%= f.input :nome, required: true, autofocus: true %>
     <%= f.input :login, required: true %>
     <%= f.input :email, required: true %>
-    <%= f.input :data_nascimento, required: true %>
+    <%= f.input :data_nascimento, required: true, start_year: Date.today.year, end_year: Date.today.year - 100,  prompt: {day: "Dia", month: "Mês", year: "Ano"} %>
     <%= f.input :cpf, required: true %>
     <%= f.input :password, required: true %>
     <%= f.input :password_confirmation, required: true %>

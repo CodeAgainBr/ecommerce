@@ -1,31 +1,40 @@
-<p id="notice"><%= notice %></p>
+<section>
+  <div class="card bg-white text-danger mt-3 mb-3 px-5 pt-3 pb-1 shadow">
+    <div class="card-head">
+      <div class="card-title">
+        <h1>Itens</h1>
+      </div>
+    </div>
 
-<h1>Itens</h1>
+    <div class="card-body">
+      <table class="table table-striped table-bordered" style="width:100%">
+        <thead>
+          <tr>
+            <th>Pedido</th>
+            <th>Produto</th>
+            <th>Quantidade</th>
+            <th colspan="3" class="text-center h5">
+              <%= link_to new_item_path, class: "ml-auto", title: "Nova" do %>
+                <i class="fas fa-plus text-danger"></i>
+              <% end %>
+            </th>
+          </tr>
+        </thead>
 
-<table>
-  <thead>
-    <tr>
-      <th>Quantidade</th>
-      <th>Produto</th>
-      <th>Pedido</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+        <tbody>
+          <% @itens.each do |item| %>
+            <tr>
+              <td><%= item.pedido.titulo %></td>
+              <td><%= item.produto.nome %></td>
+              <td><%= item.quantidade %></td>
 
-  <tbody>
-    <% @itens.each do |item| %>
-      <tr>
-        <td><%= item.quantidade %></td>
-        <td><%= item.produto %></td>
-        <td><%= item.pedido %></td>
-        <td><%= link_to 'Show', item %></td>
-        <td><%= link_to 'Edit', edit_item_path(item) %></td>
-        <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Item', new_item_path %>
+              <td><%= link_to item, title: "Detalhes" do %><i class="fas fa-info text-danger"></i><% end %></td>
+              <td><%= link_to edit_item_path(item, pedido: params[:pedido]), title: "Editar" do %><i class="fas fa-pen text-danger"></i><% end %></td>
+              <td><%= link_to item, method: :delete, data: { confirm: 'Você tem certeza?' }, title: "Apagar" do %><i class="fas fa-times text-danger"></i><% end %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>

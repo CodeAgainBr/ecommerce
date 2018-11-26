@@ -5,7 +5,14 @@ class ItensController < ApplicationController
   # GET /itens
   # GET /itens.json
   def index
-    @itens = Item.all
+    if current_user.admin
+      @itens = Item.all
+    else
+      @pedido = Pedido.where(user: current_user)
+      unless @pedido[0].nil?
+        @itens = Item.where(pedido: @pedido)
+      end
+    end
   end
 
   # GET /itens/1
@@ -16,6 +23,7 @@ class ItensController < ApplicationController
   # GET /itens/new
   def new
     @item = Item.new
+    
   end
 
   # GET /itens/1/edit
@@ -29,7 +37,7 @@ class ItensController < ApplicationController
 
     respond_to do |format|
       if @item.save
-        format.html { redirect_to @item, notice: 'Item was successfully created.' }
+        format.html { redirect_to itens_url(pedido: params[:pedido]), notice: 'Item was successfully created.' }
         format.json { render :show, status: :created, location: @item }
       else
         format.html { render :new }
@@ -43,7 +51,7 @@ class ItensController < ApplicationController
   def update
     respond_to do |format|
       if @item.update(item_params)
-        format.html { redirect_to @item, notice: 'Item was successfully updated.' }
+        format.html { redirect_to itens_url(pedido: params[:pedido]), notice: 'Item was successfully updated.' }
         format.json { render :show, status: :ok, location: @item }
       else
         format.html { render :edit }
@@ -57,7 +65,7 @@ class ItensController < ApplicationController
   def destroy
     @item.destroy
     respond_to do |format|
-      format.html { redirect_to itens_url, notice: 'Item was successfully destroyed.' }
+      format.html { redirect_to itens_url(pedido: params[:pedido]), notice: 'Item was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

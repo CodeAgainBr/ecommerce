@@ -1,4 +1,3 @@
-<p id="notice"><%= notice %></p>
 <section>
   <div class="card bg-white text-danger mt-3 mb-3 px-5 pt-3 pb-1 shadow">
     <div class="card-head">
@@ -8,11 +7,15 @@
     </div>
 
     <div class="card-body">
-      <table>
+      <table class="table table-striped table-bordered" style="width:100%">
         <thead>
           <tr>
             <th>Nome</th>
-            <th colspan="3"></th>
+            <th colspan="3" class="text-center h5">
+              <%= link_to new_categoria_path, class: "ml-auto", title: "Nova" do %>
+                <i class="fas fa-plus text-danger"></i>
+              <% end %>
+            </th>
           </tr>
         </thead>
 
@@ -20,17 +23,14 @@
           <% @categorias.each do |categoria| %>
             <tr>
               <td><%= categoria.nome %></td>
-              <td><%= link_to 'Show', categoria %></td>
-              <td><%= link_to 'Edit', edit_categoria_path(categoria) %></td>
-              <td><%= link_to 'Destroy', categoria, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              
+              <td><%= link_to categoria, title: "Detalhes" do %><i class="fas fa-info text-danger"></i><% end %></td>
+              <td><%= link_to edit_categoria_path(categoria), title: "Editar" do %><i class="fas fa-pen text-danger"></i><% end %></td>
+              <td><%= link_to categoria, method: :delete, data: { confirm: 'Você tem certeza?' }, title: "Apagar" do %><i class="fas fa-times text-danger"></i><% end %></td>
             </tr>
           <% end %>
         </tbody>
       </table>
-    </div>
-    
-    <div class="card-footer">
-      <%= link_to 'New Categoria', new_categoria_path %>
     </div>
   </div>
 </section>

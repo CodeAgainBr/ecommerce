@@ -1,31 +1,40 @@
-<p id="notice"><%= notice %></p>
+<section>
+  <div class="card bg-white text-danger mt-3 mb-3 px-5 pt-3 pb-1 shadow">
+    <div class="card-head">
+      <div class="card-title">
+        <h1>Pedidos</h1>
+      </div>
+    </div>
 
-<h1>Pedidos</h1>
+    <div class="card-body">
+      <table class="table table-striped table-bordered" style="width:100%">
+        <thead>
+          <tr>
+            <th>Título</th>
+            <th>Status</th>
+            <th>Usuário</th>
+            <th colspan="3" class="text-center h5">
+              <%= link_to new_pedido_path, class: "ml-auto", title: "Nova" do %>
+                <i class="fas fa-plus text-danger"></i>
+              <% end %>
+            </th>
+          </tr>
+        </thead>
 
-<table>
-  <thead>
-    <tr>
-      <th>Titulo</th>
-      <th>Status</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+        <tbody>
+          <% @pedidos.each do |pedido| %>
+            <tr>
+              <td><%= pedido.titulo %></td>
+              <td><%= pedido.status %></td>
+              <td><%= pedido.user.nome %></td>
 
-  <tbody>
-    <% @pedidos.each do |pedido| %>
-      <tr>
-        <td><%= pedido.titulo %></td>
-        <td><%= pedido.status %></td>
-        <td><%= pedido.user %></td>
-        <td><%= link_to 'Show', pedido %></td>
-        <td><%= link_to 'Edit', edit_pedido_path(pedido) %></td>
-        <td><%= link_to 'Destroy', pedido, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Pedido', new_pedido_path %>
+              <td><%= link_to pedido, title: "Detalhes" do %><i class="fas fa-info text-danger"></i><% end %></td>
+              <td><%= link_to edit_pedido_path(pedido), title: "Editar" do %><i class="fas fa-pen text-danger"></i><% end %></td>
+              <td><%= link_to pedido, method: :delete, data: { confirm: 'Você tem certeza?' }, title: "Apagar" do %><i class="fas fa-times text-danger"></i><% end %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>

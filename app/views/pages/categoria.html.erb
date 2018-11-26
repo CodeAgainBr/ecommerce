@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+<section>
+  
+  <div class="card bg-white text-danger mt-3 mb-3 px-1 pt-3 pb-1 shadow">
+    <div class="card-head">
+      <div class="card-title">
+        <h1><%= @categoria.nome %></h1>
+      </div>
+    </div>
+    <div class="separado px-4">
+      <% @sub_categorias.each do |sub_categoria| %>
+        <h3><%= sub_categoria.nome %></h3>
+        <% @produtos = Produto.where(sub_categoria: sub_categoria) %>
+          <div class="container px-0">
+            <div class="row">
+              <% @produtos.each do |produto| %>
+                <div class="col-12 col-md-6 col-lg-4">
+                  <div class="card card-anuncio">
+                    <img class="card-img-top" src="<%= produto.imagem %>" alt="Card image cap">
+                    <div class="card-body">
+                      <h5 class="card-text mt-1">
+                        <%= link_to produto.nome, produto_path(produto) %>
+                      </h5>
+                      <p class="card-text produto-descricao"><%= produto.descricao %></p>
+                      <div class="row">
+                        <div class="col-12">
+                          <h2>
+                            <span class="badge badge-danger btn-block"><%= produto.preco %> R$</span>
+                          </h2>
+                        </div>
+                        <div class="col-12">
+                          <%= link_to "Adicionar ao carrinho", home_add_carrinho_path(produto), class: "btn btn-success btn-block" %>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          </div>
+      <% end %>
+    </div>
+  </div>
+</section>

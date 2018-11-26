@@ -11,15 +11,15 @@
     <% @categorias = Categoria.all %>
     <% @categorias.each do |categoria| %>
       <li>
-        <a href="#">
+        <%= link_to home_categoria_path(categoria), class: "pl-4" do %>
           <h4 class="mb-0"><%= categoria.nome %></h4>
-        </a>
+        <% end %>
       </li>
 
       <% @sub_categorias = SubCategoria.where(categoria_id: categoria) %>
       <% @sub_categorias.each do |sub_categoria| %>
         <li>
-          <a href="#" class="pl-4"><%= sub_categoria.nome %></a>
+          <%= link_to sub_categoria.nome, home_sub_categoria_path(sub_categoria), class: "pl-4" %>
         </li>
       <% end %>
     <% end %>
@@ -28,8 +28,8 @@
 
 <div id="content">
   <nav class="navbar navbar-expand-lg sticky-top px-0 py-0">
-    <% if current_user %>
-      <ul class="navbar-nav ml-auto list-unstyled components">
+    <ul class="navbar-nav ml-auto list-unstyled components">
+      <% if current_user %>
         <% if current_user.admin %>
           <li class="nav-item">
             <%= link_to rails_admin_path, class: "nav-link" do %>
@@ -54,10 +54,22 @@
         </li>
         
         <li class="nav-item">
+          <%= link_to pedidos_path, class: "nav-link" do %>
+            <i class="fas fa-shopping-cart"></i>
+          <% end %>
+        </li>
+
+        <li class="nav-item">
           <%= link_to destroy_user_session_path, class: "nav-link", method: :delete do %>
             <i class="fas fa-sign-out-alt"></i>
           <% end %>
         </li>
-      </ul>
-    <% end %>
+      <% else %>
+        <li class="nav-item">
+          <%= link_to new_user_session_path, class: "nav-link" do %>
+            <i class="fas fa-sign-in-alt"></i>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
   </nav>

@@ -9,11 +9,13 @@
 	<div class="row">
 		<% @produtos.each do |produto| %>
 			<div class="col-12 col-md-6 col-lg-4">
-				<div class="card">
+				<div class="card card-anuncio">
 					<img class="card-img-top" src="<%= produto.imagem %>" alt="Card image cap">
 					<div class="card-body">
-						<h5 class="card-title mt-1"><a href="#"><%= produto.nome %></a></h5>
-						<p class="card-text"><%= produto.descricao %></p>
+						<h5 class="card-text mt-1">
+							<%= link_to produto.nome, produto_path(produto) %>
+						</h5>
+						<p class="card-text produto-descricao"><%= produto.descricao %></p>
 						<div class="row">
 							<div class="col-12">
 								<h2>
@@ -21,7 +23,7 @@
 								</h2>
 							</div>
 							<div class="col-12">
-								<a href="#" class="btn btn-success btn-block">Adicionar ao carrinho</a>
+								<%= link_to "Adicionar ao carrinho", home_add_carrinho_path(produto), class: "btn btn-success btn-block" %>
 							</div>
 						</div>
 					</div>
