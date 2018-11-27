@@ -1,19 +1,21 @@
-<p id="notice"><%= notice %></p>
+<div class="card bg-white text-danger mt-3 mb-3 px-5 pt-3 pb-1 shadow">
+  <div class="card-head">
+    <div class="card-title">
+    	<h1><%= @item.produto.nome %></h1>
+    </div>
+  </div>
+  <div class="card-body">
+		<p>
+		  <strong>Quantidade:</strong>
+		  <%= @item.quantidade %>
+		</p>
 
-<p>
-  <strong>Quantidade:</strong>
-  <%= @item.quantidade %>
-</p>
+		<p>
+		  <strong>Pedido:</strong>
+		  <%= @item.pedido.titulo %>
+		</p>
+  </div>
+	
+	<%= link_to 'Back', :back %>
+</div>
 
-<p>
-  <strong>Produto:</strong>
-  <%= @item.produto %>
-</p>
-
-<p>
-  <strong>Pedido:</strong>
-  <%= @item.pedido %>
-</p>
-
-<%= link_to 'Edit', edit_item_path(@item) %> |
-<%= link_to 'Back', itens_path %>

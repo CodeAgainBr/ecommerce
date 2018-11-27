@@ -15,6 +15,7 @@ class PedidosController < ApplicationController
   # GET /pedidos/1
   # GET /pedidos/1.json
   def show
+    @itens = Item.where(pedido: params[:id])
   end
 
   # GET /pedidos/new

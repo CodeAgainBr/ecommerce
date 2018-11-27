@@ -15,23 +15,56 @@ class PagesController < ApplicationController
 
 	def add_carrinho
 		authenticate_user!
-		@pedido = Pedido.where(user_id: current_user, status: "aberto").limit(1)[0]
+		@produto = Produto.find(params[:id])
 
-		if @pedido.nil?
-			@pedido = Pedido.new
-			@pedido.titulo = DateTime.now.to_formatted_s(:number)
-			@pedido.status = "aberto"
-			@pedido.user = current_user
-			@pedido.save
+		if (@produto.quantidade - 1) <= 0
+			respond_to do |format|
+        format.html { redirect_to :back, alert: 'Quantidade em estoque insuficiente.\nQuantidade atual: '+@produto.quantidade }
+	    end
+	  else
+	  	@pedido = Pedido.where(user_id: current_user, status: "aberto").limit(1)[0]
+
+			if @pedido.nil?
+				@pedido = Pedido.new
+				@pedido.titulo = DateTime.now.to_formatted_s(:number)
+				@pedido.status = "aberto"
+				@pedido.user = current_user
+				@pedido.save
+			end
+
+
+			@item = Item.new
+			@item.pedido = @pedido
+			@item.produto = Produto.find(params[:id])
+			@item.quantidade = 1
+			@item.save
+		end
+		
+		redirect_to :back
+	end
+
+	def fazer_pedido
+		authenticate_user!
+		@falha = false
+		@pedido = Pedido.find(:id)
+		@produtos = Produto.where(pedido: @pedido)
+
+		@produtos.each do |produto|
+			if 1 > produto.quantidade
+				respond_to do |format|
+	        format.html { redirect_to :back, alert: 'Produto:'+produto.nome+'\nQuantidade em estoque insuficiente.\nQuantidade atual: '+produto.quantidade }
+		    	@falha = true
+		    end
+			end
 		end
 
+		unless @falha
+			@produtos.each do |produto|
+				@nova_quantidade = produto.quantidade -= 1;
+				produto.update(quantidade: @nova_quantidade)
+			end
 
-		@item = Item.new
-		@item.pedido = @pedido
-		@item.produto = Produto.find(params[:id])
-		@item.quantidade = 1
-		@item.save
-
-		redirect_to :back
+			@pedido.update(status: "andamento")
+		end
 	end
 end
