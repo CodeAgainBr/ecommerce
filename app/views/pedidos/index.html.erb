@@ -13,11 +13,7 @@
             <th>Título</th>
             <th>Status</th>
             <th>Usuário</th>
-            <th colspan="3" class="text-center h5">
-              <%= link_to new_pedido_path, class: "ml-auto", title: "Nova" do %>
-                <i class="fas fa-plus text-danger"></i>
-              <% end %>
-            </th>
+            <th colspan="3"></th>
           </tr>
         </thead>
 
@@ -29,8 +25,16 @@
               <td><%= pedido.user.nome %></td>
 
               <td><%= link_to pedido, title: "Detalhes" do %><i class="fas fa-info text-danger"></i><% end %></td>
-              <td><%= link_to edit_pedido_path(pedido), title: "Editar" do %><i class="fas fa-pen text-danger"></i><% end %></td>
-              <td><%= link_to pedido, method: :delete, data: { confirm: 'Você tem certeza?' }, title: "Apagar" do %><i class="fas fa-times text-danger"></i><% end %></td>
+
+              <% if current_user.admin %>
+                <td><%= link_to edit_pedido_path(pedido), title: "Editar" do %><i class="fas fa-pen text-danger"></i><% end %></td>
+              <% end %>
+
+              <% if pedido.status == "aberto" %>
+                <td><%= link_to pedido, method: :delete, data: { confirm: 'Você tem certeza?' }, title: "Apagar" do %><i class="fas fa-times text-danger"></i><% end %></td>
+              <% else %>
+                <td></td>
+              <% end %>
             </tr>
           <% end %>
         </tbody>

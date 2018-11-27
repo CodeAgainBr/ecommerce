@@ -1,19 +1,61 @@
-<p id="notice"><%= notice %></p>
+<div class="card bg-white text-danger mt-3 mb-3 px-5 pt-3 pb-1 shadow">
+  <div class="card-head">
+    <div class="card-title">
+    	<h1>Pedido <%= @pedido.titulo %></h1>
+    </div>
+  </div>
+  <div class="card-body">
+		<p>
+		  <strong>Status:</strong>
+		  <%= @pedido.status %>
+		</p>
 
-<p>
-  <strong>Titulo:</strong>
-  <%= @pedido.titulo %>
-</p>
+		<% if @pedido.user != current_user %>
+			<p>
+				<strong>User:</strong>
+				<%= @pedido.user %>
+			</p>
+		<% end %>
+	
+		<div class="card bg-white text-danger mt-3 mb-3 px-5 pt-3 pb-1 shadow">
+		  <div class="card-head">
+		    <div class="card-title">
+		      <h1>Itens</h1>
+		    </div>
+		  </div>
 
-<p>
-  <strong>Status:</strong>
-  <%= @pedido.status %>
-</p>
+		  <div class="card-body">
+		    <table class="table table-striped table-bordered" style="width:100%">
+		      <thead>
+		        <tr>
+		          <th>Produto</th>
+		          <th>Quantidade</th>
+            	<th colspan="2"></th>
+		        </tr>
+		      </thead>
 
-<p>
-  <strong>User:</strong>
-  <%= @pedido.user %>
-</p>
+		      <tbody>
+		        <% @itens.each do |item| %>
+		          <tr>
+		            <td><%= item.produto.nome %></td>
+		            <td><%= item.quantidade %></td>
 
-<%= link_to 'Edit', edit_pedido_path(@pedido) %> |
-<%= link_to 'Back', pedidos_path %>
+		            <td><%= link_to item, title: "Detalhes" do %><i class="fas fa-info text-danger"></i><% end %></td>
+
+		            <% if @pedido.status == "aberto" %>
+		            	<td><%= link_to item, method: :delete, data: { confirm: 'Você tem certeza?' }, title: "Apagar" do %><i class="fas fa-times text-danger"></i><% end %></td>
+	            	<% else %>
+		            	<td></td>
+		            <% end %>
+		          </tr>
+		        <% end %>
+		      </tbody>
+		    </table>
+		  </div>
+		</div>
+		<div class="shared row">
+			<%= link_to 'Back', pedidos_path %>
+			<%= link_to 'Fazer pedido', pedidos_path %>
+		</div>
+	</div>
+</div>
