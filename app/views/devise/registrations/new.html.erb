@@ -1,20 +1,41 @@
-<h2>Registrar-se</h2>
+<div class="section">
+  <div class="row">
+    <div id="col-login" class="col-lg-8 col-md-10 mx-auto">
+      <div class="card card-login shadow mt-4">
+        <div class="card-body card-body-login">
+          <h3 class="text-shadow card-title text-uppercase text-center text-white mt-2">Cadastro de Usuário</h3>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
+          <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.input :nome, required: true, autofocus: true %>
-    <%= f.input :login, required: true %>
-    <%= f.input :email, required: true %>
-    <%= f.input :data_nascimento, required: true, start_year: Date.today.year, end_year: Date.today.year - 100,  prompt: {day: "Dia", month: "Mês", year: "Ano"} %>
-    <%= f.input :cpf, required: true %>
-    <%= f.input :password, required: true %>
-    <%= f.input :password_confirmation, required: true %>
+          <div class="form-inputs">
+            <%= f.input :nome, required: true, label_html: {class: "text-white"}, autofocus: true %>
+            <%= f.input :login, required: true,label_html: {class: "text-white"} %>
+            <%= f.input :email, required: true, label_html: {class: "text-white"} %>
+            <%= f.input :data_nascimento, label_html: {class: "text-white"}, required: true, start_year: Date.today.year, end_year: Date.today.year - 100,  prompt: {day: "Dia", month: "Mês", year: "Ano"} %>
+            <%= f.input :cpf, required: true, label_html: {class: "text-white"} %>
+            <%= f.input :password, required: true, label_html: {class: "text-white"} %>
+            <%= f.input :password_confirmation, required: true,label_html: {class: "text-white"} %>
+          </div>
+
+          <div class="form-actions mt-4">
+            <div class="col-12 px-0">
+              <%= f.button :submit, "Cadastrar", class: "btn-success btn-block" %>
+            </div>
+            <div class="row">
+              <div class="col-12 mt-2">
+                <%= link_to "Já é cadastrado?", new_session_path(resource_name), class: "text-white" %><br />
+              </div>
+            </div>
+          </div>
+        </div>
+        <% end %>
+      </div>
+    </div>      
   </div>
-
-  <div class="form-actions row px-2">
-    <%= link_to "voltar", root_path, class: "btn btn-danger" %>
-    <%= f.button :submit, class: "btn btn-success ml-auto" %>
-  </div>
-<% end %>
+</div>
+<script>
+  $(document).ready(function() {
+    $('#content').addClass('content-login');
+  })
+</script>
