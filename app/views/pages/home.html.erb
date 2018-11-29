@@ -1,35 +1,37 @@
-<section class="home-head jumbotron">
-	<div class="container text-uppercase text-center">
-		<h1 class="welcome">Code Again E-commerce</h1>
-		<h4 class="welcome">Aqui tem tudo para informática e tecnologia em geral!</h4>
-	</div>
-</section>	
+<section>
+	<div class="home-head jumbotron mt-4">
+		<div class="container text-uppercase text-center">
+			<h1 class="welcome">Code Again E-commerce</h1>
+			<h4 class="welcome">Aqui tem tudo para informática e tecnologia em geral!</h4>
+		</div>
+	</div>	
 
-<div class="container px-0">
-	<div class="row">
-		<% @produtos.each do |produto| %>
-			<div class="col-12 col-md-6 col-lg-4">
-				<div class="card card-anuncio">
-					<img class="card-img-top" src="<%= produto.imagem %>" alt="Card image cap">
-					<div class="card-body">
-						<h5 class="card-text mt-1">
-							<%= link_to produto.nome, produto_path(produto) %>
-						</h5>
-						<p class="card-text produto-descricao"><%= produto.descricao %></p>
-						<div class="row">
-							<div class="col-12">
-								<h2>
-									<span class="badge badge-danger btn-block"><%= produto.preco %> R$</span>
-								</h2>
-							</div>
-							<div class="col-12">
-								<%= link_to "Adicionar ao carrinho", home_add_carrinho_path(produto), class: "btn btn-success btn-block", data: {toggle: "modal", target: "#exampleModal"} %>
+	<div class="container px-0">
+		<div class="row">
+			<% @produtos.each do |produto| %>
+				<div class="col-12 col-md-6 col-lg-4">
+					<div class="card card-anuncio">
+						<img class="card-img-top" src="<%= produto.imagem %>" alt="Card image cap">
+						<div class="card-body">
+							<h5 class="card-text mt-1">
+								<%= link_to produto.nome, produto_path(produto) %>
+							</h5>
+							<p class="card-text produto-descricao"><%= produto.descricao %></p>
+							<div class="row">
+								<div class="col-12">
+									<h2>
+										<span class="badge badge-danger btn-block"><%= produto.preco %> R$</span>
+									</h2>
+								</div>
+								<div class="col-12">
+									<%= link_to "Adicionar ao carrinho", home_add_carrinho_path(produto), class: "btn btn-success btn-block", data: {toggle: "modal", target: "#exampleModal"} %>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-		<% end %>
+			<% end %>
+		</div>
 	</div>
-</div>
+</section>
 <%= render "pages/modal" %>

@@ -1,71 +1,80 @@
-<p id="notice"><%= notice %></p>
 <section>
-  <div class="card bg-white text-danger mt-3 mb-3 px-5 pt-3 pb-1 shadow">
-    <div class="card-head">
-      <div class="card-title">
-        <%= @produto.nome %>
+  <div class="card card-show bg-white text-danger mt-3 mb-3 px-5 pt-3 pb-1 shadow">
+    <div class="row">
+      <div class="col-lg-6 col-sm-12 mt-2">
+        <img class="img-fluid" src="<%= @produto.imagem %>">        
       </div>
-    </div>
+      <div class="col-lg-6 col-sm-12 text-left">
+        <h6>Categoria - <%= @produto.sub_categoria.nome %></h6>
+        <h2 class="mt-3"><%= @produto.nome %></h2>
+        <h4 class="mt-1">R$<%= @produto.preco %></h4>
+        <small class="mt-3"><%= @produto.descricao %></small>
 
-    <div class="card-body">
-      <p>
-        <strong>Sub categoria:</strong>
-        <%= @produto.sub_categoria.nome %>
-      </p>
-
-      <p>
-        <strong>Marca:</strong>
-        <%= @produto.marca %>
-      </p>
-
-      <p>
-        <strong>Cor:</strong>
-        <%= @produto.cor %>
-      </p>
-
-      <p>
-        <strong>Preco:</strong>
-        <%= @produto.preco %>
-      </p>
-
-      <p>
-        <strong>Garantia:</strong>
-        <%= @produto.garantia %>
-      </p>
-
-      <p>
-        <strong>Peso:</strong>
-        <%= @produto.peso %>
-      </p>
-
-      <p>
-        <strong>Validade:</strong>
-        <%= @produto.validade %>
-      </p>
-
-      <p>
-        <strong>Modelo:</strong>
-        <%= @produto.modelo %>
-      </p>
-
-      <p>
-        <strong>Descricao:</strong>
-        <%= @produto.descricao %>
-      </p>
-
-      <p>
-        <strong>Quantidade:</strong>
-        <%= @produto.quantidade %>
-      </p>
-
-      <p>
-        <strong>Vendas:</strong>
-        <%= @produto.vendas %>
-      </p>
-    </div>
-    
-    <div class="card-footer">
-      <%= link_to 'Back', produtos_path %>
+        <ul class="nav nav-tabs mt-5" id="myTab" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Informações</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Detalhes Técnicos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Informações Adicionais</a>
+          </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+          <div class="tab-pane fade show active mt-3" id="home" role="tabpanel" aria-labelledby="home-tab">
+            <p class="mb-0">
+              <strong>Nome:</strong>
+              <%= @produto.nome %>
+            </p>  
+            <p class="mb-0">
+              <strong>Sub-categoria:</strong>
+              <%= @produto.sub_categoria.nome %>
+            </p>
+            <p class="mb-0">
+              <strong>Nome:</strong>
+              <%= @produto.nome %>
+            </p>                            
+            <p class="mb-0">          
+              <strong>Marca:</strong>
+              <%= @produto.marca %>
+            </p> 
+            <p class="mt-0">
+              <strong>Cor:</strong>
+              <%= @produto.cor %>
+            </p>                     
+          </div>
+          <div class="tab-pane fade mt-3" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+            <p class="mb-0">
+              <strong>Garantia:</strong>
+              <%= @produto.garantia %> meses
+            </p>  
+            <p>
+              <strong>Modelo:</strong>
+              <%= @produto.modelo %>
+            </p>            
+          </div>
+          <div class="tab-pane fade mt-3" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+            <p class="mb-0">
+              <strong>Peso:</strong>
+              <%= @produto.peso %> meses
+            </p>  
+            <p class="mb-0">
+              <strong>Validade:</strong>
+              <%= @produto.validade %>
+            </p>
+            <p class="mb-0">
+              <strong>Quantidade:</strong>
+              <%= @produto.quantidade %>
+            </p>
+            <p>
+              <strong>vendas:</strong>
+              <%= @produto.vendas %>
+            </p>                             
+          </div>
+        </div>
+      </div>      
     </div>
   </div>
+    <%= link_to 'Voltar', produtos_path, class: "btn btn-danger" %>
 </section>

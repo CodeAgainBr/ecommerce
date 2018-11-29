@@ -1,7 +1,5 @@
-<p id="notice"><%= notice %></p>
-<section>
-  
-  <div class="card bg-white text-danger mt-3 mb-3 px-1 pt-3 pb-1 shadow">
+<section>  
+  <div class="card bg-white text-danger mt-3 mb-3 px-1 pt-3 pb-4 pl-4 pr-4 shadow">
     <div class="card-head">
       <div class="card-title">
         <h1><%= @categoria.nome %></h1>
@@ -29,7 +27,7 @@
                           </h2>
                         </div>
                         <div class="col-12">
-                          <%= link_to "Adicionar ao carrinho", home_add_carrinho_path(produto), class: "btn btn-success btn-block" %>
+                        <%= link_to "Adicionar ao carrinho", home_add_carrinho_path(produto), class: "btn btn-success btn-block", data: {toggle: "modal", target: "#exampleModal"} %>
                         </div>
                       </div>
                     </div>
@@ -42,3 +40,4 @@
     </div>
   </div>
 </section>
+<%= render "pages/modal" %>
