@@ -2,7 +2,7 @@
   <div class="card bg-white text-danger mt-3 mb-3 px-5 pt-3 pb-1 shadow">
     <div class="card-head">
       <div class="card-title">
-  			<%= @sub_categoria.nome %>
+  			<h1><%= @sub_categoria.nome %></h1>
       </div>
     </div>
 
@@ -14,7 +14,7 @@
     </div>
     
     <div class="card-footer">
-			<%= link_to 'Back', sub_categorias_path %>
+      <%= link_to 'Voltar', sub_categorias_path, class: "btn btn-danger" %>
     </div>
   </div>
 </section>
