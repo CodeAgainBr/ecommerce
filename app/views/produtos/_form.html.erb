@@ -19,7 +19,7 @@
 
     <%= f.input :peso %>
 
-    <%= f.input :validade %>
+    <%= f.input :validade , required: true, start_year: Date.today.year, end_year: Date.today.year + 100,  prompt: {day: "Dia", month: "Mês", year: "Ano"} %>
 
     <%= f.input :modelo %>
 
@@ -28,8 +28,6 @@
     <%= f.input :descricao %>
 
     <%= f.input :quantidade %>
-
-    <%= f.input :vendas %>
 
   </div>
 

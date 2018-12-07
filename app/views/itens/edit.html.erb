@@ -1,6 +1,6 @@
-<h1>Editing Item</h1>
+<h1>Editando Item</h1>
 
 <%= render 'form', item: @item %>
 
-<%= link_to 'Show', @item %> |
-<%= link_to 'Back', itens_path(pedido: params[:pedido]) %>
+<%= link_to 'Mostrar', class: "btn btn-info", @item %> |
+<%= link_to 'Voltar', class: "btn btn-danger", itens_path(pedido: params[:pedido]) %>

@@ -34,7 +34,7 @@
 											<input type="number" class="form-control" id="qtd-produto">
 										</div>
 										<div class="col-12 mt-1">
-											<button type="button" id="enviar-carrinho" class="btn btn-success btn-block" onclick="enviarQuantidade('<%= produto.id %>')">Enviar</button>
+											<button type="button" id="enviar-carrinho" class="btn btn-success btn-block" onclick="enviarQuantidade(<%= produto.id %>)">Enviar</button>
 										</div>
 									</div>
 								<!-- </form>										 -->
@@ -47,8 +47,6 @@
 		</div>
 	</div>
 </section>
-
-<% console %>
 
 <%= render "pages/modal" %>
 
