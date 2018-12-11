@@ -32,24 +32,26 @@
 
       <% if current_user %>
 
-        <li class="nav-item">
-          <div class="dropdown">
-            <a class="btn btn-secondary btn-icon-plus dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <i class="fa fa-plus"></i>
-            </a>
-            <div class="dropdown-plus dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <%= link_to produtos_path, class: "dropdown-item" do %>
-                Cadastro de Produtos
-              <% end %>       
-              <%= link_to categorias_path, class: "dropdown-item" do %>
-                Cadastro de Categorias
-              <% end %>                
-              <%= link_to sub_categorias_path, class: "dropdown-item" do %>
-                Cadastro de Sub-categorias
-              <% end %>                  
+        <% if current_user.admin %>
+          <li class="nav-item">
+            <div class="dropdown">
+              <a class="btn btn-secondary btn-icon-plus dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-plus"></i>
+              </a>
+              <div class="dropdown-plus dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <%= link_to produtos_path, class: "dropdown-item" do %>
+                  Cadastro de Produtos
+                <% end %>       
+                <%= link_to categorias_path, class: "dropdown-item" do %>
+                  Cadastro de Categorias
+                <% end %>                
+                <%= link_to sub_categorias_path, class: "dropdown-item" do %>
+                  Cadastro de Sub-categorias
+                <% end %>                  
+              </div>
             </div>
-          </div>
-        </li>
+          </li>
+        <% end %>
 
         <% if current_user.admin %>
           <li class="nav-item">
