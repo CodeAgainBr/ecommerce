@@ -11,7 +11,7 @@
         <thead>
           <tr>
             <th>Nome</th>
-            <th colspan="3" class="text-center h5">
+            <th colspan="2" class="text-center h5">
               <%= link_to new_categoria_path, class: "ml-auto", title: "Nova" do %>
                 <i class="fas fa-plus text-danger"></i>
               <% end %>
@@ -23,8 +23,6 @@
           <% @categorias.each do |categoria| %>
             <tr>
               <td><%= categoria.nome %></td>
-              
-              <td><%= link_to categoria, title: "Detalhes" do %><i class="fas fa-info text-danger"></i><% end %></td>
               <td><%= link_to edit_categoria_path(categoria), title: "Editar" do %><i class="fas fa-pen text-danger"></i><% end %></td>
               <td><%= link_to categoria, method: :delete, data: { confirm: 'Você tem certeza?' }, title: "Apagar" do %><i class="fas fa-times text-danger"></i><% end %></td>
             </tr>

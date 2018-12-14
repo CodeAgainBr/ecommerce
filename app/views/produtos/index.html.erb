@@ -1,13 +1,13 @@
 <section>
-  <div class="container jumbotron text-center">
-    <div class="row">
-      <div class="filtros">
-        <%= render 'search' %>
-      </div>
+  <div class="home-head jumbotron mt-4">
+    <div class="container text-uppercase text-center">
+      <h1 class="welcome">Code Again E-commerce</h1>
+      <h4 class="welcome">Aqui tem tudo para informática e tecnologia em geral!</h4>
     </div>
   </div>
 
   <div class="container px-0">
+    <%= link_to "Novo Produto", new_produto_path, class: "btn btn-success mb-2" %>
     <div class="row">
       <% @produtos.each do |produto| %>
         <div class="col-12 col-md-4 col-lg-3">

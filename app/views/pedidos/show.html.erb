@@ -10,10 +10,10 @@
 		  <%= @pedido.status %>
 		</p>
 
-		<% if @pedido.user != current_user %>
+		<% if current_user.admin %>
 			<p>
 				<strong>User:</strong>
-				<%= @pedido.user %>
+				<%= @pedido.user.nome %>
 			</p>
 		<% end %>
 	
@@ -54,8 +54,10 @@
 		  </div>
 		</div>
 		<div class="shared row">
-			<%= link_to 'Back', pedidos_path %>
-			<%= link_to 'Fazer pedido', pedidos_path %>
+			<%= link_to 'Voltar', pedidos_path, class: "btn btn-danger" %>
+			<% if @pedido.status == "aberto" %>
+				<%= link_to 'Fazer pedido', home_fazer_pedido_path(id:@pedido.id), class: "btn btn-success" %>
+			<% end %>
 		</div>
 	</div>
 </div>

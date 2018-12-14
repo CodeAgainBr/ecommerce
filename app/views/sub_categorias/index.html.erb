@@ -27,7 +27,7 @@
               <td><%= sub_categoria.categoria.nome %></td>
 
               <td><%= link_to sub_categoria, title: "Detalhes" do %><i class="fas fa-info text-danger"></i><% end %></td>
-              <td><%= link_to edit_sub_categoria_path(sub_categoria), title: "Editar" do %><i class="fas fa-pen text-danger"></i><% end %></td>
+              <td><%= link_to edit_sub_categoria_path(sub_categoria), title: "Editar" do %><i class="fas fa-pen text-danger"></><% end %></td>
               <td><%= link_to sub_categoria, method: :delete, data: { confirm: 'Você tem certeza?' }, title: "Apagar" do %><i class="fas fa-times text-danger"></i><% end %></td>
             </tr>
           <% end %>

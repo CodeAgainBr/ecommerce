@@ -46,6 +46,18 @@ i {
 	border: 5px solid black;
 }
 
+.btn-icon-plus::after {
+    display: none;
+}
+
+.dropdown-plus {
+	background-color: black !important;
+}
+
+.dropdown-plus > .dropdown-item:hover {
+	background-color: white !important;
+	color: black !important;
+}
 
 .card.card-anuncio{
 	.card-body{
@@ -54,4 +66,33 @@ i {
 			max-height: 8ch !important;
 		}
 	}
+}
+
+.content-login {
+	background-image: url('/assets/background.jpg');
+	background-size: cover;
+}
+
+.card-login {
+	background: rgba(24, 24, 24, 0.3);
+	.card-body {
+		background: rgba(24, 24, 24, 0.3);
+	}
+}
+
+.text-shadow {
+	text-shadow: 0px 3px 3px black	;
+}
+
+.home-head {
+	background-image: url('/assets/home.jpg');
+	background-size: cover;
+}
+
+.welcome {
+	color: white !important;
+}
+
+.card-show {
+	height: 500px !important;
 }

@@ -29,11 +29,34 @@
 <div id="content">
   <nav class="navbar navbar-expand-lg sticky-top px-0 py-0">
     <ul class="navbar-nav ml-auto list-unstyled components">
+
       <% if current_user %>
+
+        <% if current_user.admin %>
+          <li class="nav-item">
+            <div class="dropdown">
+              <a class="btn btn-secondary btn-icon-plus dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-plus"></i>
+              </a>
+              <div class="dropdown-plus dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <%= link_to produtos_path, class: "dropdown-item" do %>
+                  Cadastro de Produtos
+                <% end %>       
+                <%= link_to categorias_path, class: "dropdown-item" do %>
+                  Cadastro de Categorias
+                <% end %>                
+                <%= link_to sub_categorias_path, class: "dropdown-item" do %>
+                  Cadastro de Sub-categorias
+                <% end %>                  
+              </div>
+            </div>
+          </li>
+        <% end %>
+
         <% if current_user.admin %>
           <li class="nav-item">
             <%= link_to rails_admin_path, class: "nav-link" do %>
-              <i class="fas fa-key"></i>
+              <i class="fas fa-key" title="Admin"></i>
             <% end %>
             </a>
           </li>
@@ -42,32 +65,26 @@
         <% if current_user.admin %>
           <li class="nav-item">
             <%= link_to console_path, class: "nav-link" do %>
-              <i class="fas fa-terminal"></i>
+              <i class="fas fa-terminal" title="Console"></i>
             <% end %>
           </li>
         <% end %>
-
-        <li class="nav-item">
-          <%= link_to edit_user_registration_path, class: "nav-link" do %>
-            <i class="fas fa-cog"></i>
-          <% end %>
-        </li>
         
         <li class="nav-item">
           <%= link_to pedidos_path, class: "nav-link" do %>
-            <i class="fas fa-shopping-cart"></i>
+            <i class="fas fa-shopping-cart" title="Carrinho"></i>
           <% end %>
         </li>
 
         <li class="nav-item">
           <%= link_to destroy_user_session_path, class: "nav-link", method: :delete do %>
-            <i class="fas fa-sign-out-alt"></i>
+            <i class="fas fa-sign-out-alt" title="Sair"></i>
           <% end %>
         </li>
       <% else %>
         <li class="nav-item">
           <%= link_to new_user_session_path, class: "nav-link" do %>
-            <i class="fas fa-sign-in-alt"></i>
+            <i class="fas fa-sign-in-alt" title="Entrar"></i>
           <% end %>
         </li>
       <% end %>

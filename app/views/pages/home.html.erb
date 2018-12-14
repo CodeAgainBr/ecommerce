@@ -1,13 +1,14 @@
-<section class="jumbotron text-center">
-	<div class="container">
-		<h1 class="jumbotron-heading text-uppercase">Nosso E-commerce</h1>
-		<p class="lead text-muted mb-0">Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un peintre anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte...</p>
-	</div>
-</section>	
+<section>
+	<div class="home-head jumbotron mt-4">
+		<div class="container text-uppercase text-center">
+			<h1 class="welcome">Code Again E-commerce</h1>
+			<h4 class="welcome">Aqui tem tudo para informática e tecnologia em geral!</h4>
+		</div>
+	</div>	
 
-<div class="container px-0">
-	<div class="row">
-		<% @produtos.each do |produto| %>
+	<div class="container px-0">
+		<div class="row">
+			<% @produtos.each_with_index do |produto, i| %>
 			<div class="col-12 col-md-6 col-lg-4">
 				<div class="card card-anuncio">
 					<img class="card-img-top" src="<%= produto.imagem %>" alt="Card image cap">
@@ -22,13 +23,51 @@
 									<span class="badge badge-danger btn-block"><%= produto.preco %> R$</span>
 								</h2>
 							</div>
-							<div class="col-12">
-								<%= link_to "Adicionar ao carrinho", home_add_carrinho_path(produto), class: "btn btn-success btn-block" %>
+							<div id="col-carrinho<%= i %>" class="col-12">
+								<button id="mostrar-qtd<%= i %>" class="btn btn-success btn-block">Adicionar ao carrinho</button>
 							</div>
+							<div id="col-quantidade<%= i %>" class="col-12 d-none">
+								<!-- <form class="form-carrinho"> -->
+									<div class="row">
+										<div class="col-12">
+											<label for="qtd-produto<%= i %>" class="mb-0">Quantidade desejada</label>
+											<input type="number" class="form-control" id="qtd-produto<%= i %>">
+										</div>
+										<div class="col-12 mt-1">
+											<button type="button" id="enviar-carrinho<%= i %>" class="btn btn-success btn-block" onclick="enviarQuantidade(<%= produto.id %>)">Enviar</button>
+										</div>
+									</div>
+									<!-- </form>                     -->
+								</div>
+							</div>						
 						</div>
 					</div>
 				</div>
+				<script>
+					$(document).ready(function() {
+						$('#mostrar-qtd<%= i %>').click(function() {
+							$('#col-carrinho<%= i %>').hide();
+							$('#col-quantidade<%= i %>').removeClass('d-none');
+						});
+					});
+
+					function enviarQuantidade(id) {
+						quantidade = $("#qtd-produto<%= i %>").val();
+
+						$.ajax({
+							url: "/add_carrinho/"+id,
+							data:{
+								quantidade: quantidade
+							},
+							success: function(){
+								alert("Produto adicionado!");
+							}
+						});
+					}
+				</script>			
+				<% end %>
 			</div>
-		<% end %>
-	</div>
-</div>
+		</div>
+	</section>
+
+	<%= render "pages/modal" %>
